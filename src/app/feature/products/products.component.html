@@ -1,0 +1,10 @@
+<div class="mobile-page-header-container">
+    <h3>SEASONS SALES</h3>
+</div>
+<div class="products-container">
+    <div class="single-product-container" *ngFor="let product of products$ | async">
+        <app-product-card [product]="product" (click)="onCardClick(product.id)"></app-product-card>
+    </div>
+</div>
+
+<app-single-product-modal [product]="singleProduct" (modalClose)="onModalClose()"></app-single-product-modal>

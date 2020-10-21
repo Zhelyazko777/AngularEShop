@@ -1,0 +1,12 @@
+<div class="product-card">
+    <div class="image-container">
+        <p class="hover-text">SHOW MORE</p>
+        <div class="price-container">
+            <span class="regular-price" [ngClass]="{ 'scratched': product.promotionalPrice }">${{ product.price }}</span>
+            <span class="promotional-price" *ngIf="product.promotionalPrice">${{ product.promotionalPrice }}</span>
+        </div>
+    </div>
+    <div class="title-container">
+        <p class="title">{{ product.title }}</p>
+    </div>
+</div>

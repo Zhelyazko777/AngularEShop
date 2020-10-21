@@ -1,0 +1,91 @@
+<div class="modal-container" *ngIf="product">
+    <div class="modal">
+        <div class="image-conatiner">
+            <div class="social-icons-toggle-container" *ngIf="isThereAnySocialLinks">
+                <img src="/assets/icons/Plus.svg"
+                    class="socials-toggle-icon" 
+                    [ngClass]="{ 'closed-socials-icon': socialToggle, 'opened-socials-icon': !socialToggle }"
+                    (click)="onSocialIconsToggle()" alt="">
+                <div class="socials-list-container">
+                    <ul class="socials-list" [ngClass]="socialToggle ? 'hidden' : ''">
+                        <li *ngIf="product.facebookLink">
+                            <a [href]="product.facebookLink">
+                                <img src="/assets/icons/Facebook.svg" alt="">
+                            </a>
+                        </li>
+                        <li *ngIf="product.twitterLink">
+                            <a [href]="product.twitterLink">
+                                <img src="/assets/icons/Twitter.svg" alt="">
+                            </a>
+                        </li>
+                        <li *ngIf="product.pinterestLink">
+                            <a [href]="product.pinterestLink">
+                                <img src="/assets/icons/Pinterest.svg" alt="">
+                            </a>
+                        </li>
+                        <li *ngIf="product.youtubekLink">
+                            <a [href]="product.youtubekLink">
+                                <img src="/assets/icons/Youtube.svg" alt="">
+                            </a>
+                        </li>
+                        <li *ngIf="product.instagramLink">
+                            <a [href]="product.instagramLink">
+                                <img src="/assets/icons/Instagram.svg" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="title-container section">
+            <h3 class="title">{{ product.title }}</h3>
+        </div>
+        <div class="id-container section">
+            <p class="id">Item #: {{ product.id }}</p>
+        </div>
+        <div class="price-container section">
+            <span class="price" [ngClass]="{ 'line-through': product.promotionalPrice }">${{ product.price }}</span>
+            <span class="promotional-price" *ngIf="product.promotionalPrice">${{ product.promotionalPrice }}</span>
+        </div>
+        <div class="rating-container section">
+            <img src="/assets/icons/Star.svg" alt="" *ngFor="let i of [].constructor(product.rating)">
+            <img src="/assets/icons/Star-Colored.svg" alt="" *ngFor="let i of [].constructor(5 - product.rating)">
+        </div>
+        <div class="description-container section">
+            <p class="label">DESCRIPTION:</p>
+            <p class="description">
+                {{ product.description }}
+            </p>
+        </div>
+        <div class="social-icons-mobile-container">
+            <a [href]="product.facebookLink" *ngIf="product.facebookLink">
+                <img src="/assets/icons/Facebook.svg" alt="">
+            </a>
+            <a [href]="product.twitterLink" *ngIf="product.twitterLink">
+                <img src="/assets/icons/Twitter.svg" alt="">
+            </a>
+            <a [href]="product.pinterestLink" *ngIf="product.pinterestLink">
+                <img src="/assets/icons/Pinterest.svg" alt="">
+            </a>
+            <a [href]="product.youtubekLink" *ngIf="product.youtubekLink">
+                <img src="/assets/icons/Youtube.svg" alt="">
+            </a>
+            <a [href]="product.instagramLink" *ngIf="product.instagramLink">
+                <img src="/assets/icons/Instagram.svg" alt="">
+            </a>
+        </div>
+        <div class="size-container section">
+            <p class="label label-desktop">SIZE: </p>
+            <p class="label label-mobile">SELECT A SIZE: </p>
+            <div *ngFor="let size of product.availableSizes" class="size-box" [ngClass]="{ 'active': size === selectedSize }" (click)="onProductSizeClick(size)">
+                <p>{{ size | productSize }}</p>
+            </div>
+        </div>
+        <div class="action-button-container section">
+            <button (click)="onAddToCartBtnClick()">ADD TO CART</button>
+        </div>
+        <div class="close-container">
+            <img src="/assets/icons/Close.svg" alt="" (click)="onCloseBtnClick()">
+        </div>
+    </div>
+</div>
