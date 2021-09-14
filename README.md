@@ -1,3 +1,5 @@
+Design: https://www.figma.com/file/ksBwM1ovdSQUKSB7KdSivu/e-shop
+
 !!!!! HTTP calls are mocked with products.json file, which is located in src/assets folder !!!!!  
 Some of the UI elements like button/modal/... can be moved to separate reusable UI components in the shared module,
 but for the current task it's not needed, because they are used just one time!
